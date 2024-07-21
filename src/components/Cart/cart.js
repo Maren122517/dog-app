@@ -5,6 +5,7 @@ import { CartContainer, CartItem, RemoveButton } from "./style";
 
 const Cart = () => {
   const cartItems = useSelector(state => state.cart.items);
+  const product = useSelector(state => state.products.items);
   const dispatch = useDispatch();
 
   const handleRemoveFromCart = (productId) => {
@@ -17,7 +18,7 @@ const Cart = () => {
       <ul>
         {cartItems.map(item => (
           <CartItem key={item.productId}>
-            <span>Product ID: {item.productId} - Quantity: {item.quantity}</span>
+            <span>{product.title} - Quantity: {item.quantity}</span>
             <RemoveButton onClick={() => handleRemoveFromCart(item.productId)}>Remove</RemoveButton>
           </CartItem>
         ))}
